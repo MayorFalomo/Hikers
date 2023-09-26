@@ -2,19 +2,20 @@ import styled from "styled-components"
 
 export const HeroStyle = styled.div`
 section{
-    border: 2px red solid;
+    /* border: 2px red solid; */
     /* position: relative; */
     .sky{
         width: 100%;
         height: 100vh;
-        object-fit: cover;
         height: 100vh;
+        background-color: black;
         background-repeat: no-repeat;
         background-position: center ;
         background-size: cover;
+        background-attachment: fixed;
         filter: brightness(100%);
         object-fit: cover;
-        border: 2px red solid;
+        /* border: 2px red solid; */
         position: relative;
         .overLay{
             background-color: rgba(0, 0, 0, 0.1);

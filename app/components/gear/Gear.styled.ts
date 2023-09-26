@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 
-export const LevelStyled = styled.div`
+export const GearStyled = styled.div`
 section{
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
     gap: 50px;
-    margin: 0 auto;
     width: 90%;
-    position: relative;
+    margin: 80px auto;
     .container{
-        /* border: 3px red solid; */
-        width: 40%;
         position: relative;
         z-index:2;
+        width: 40%;
         .started{
             display: flex;
             align-items: center;
@@ -35,7 +33,6 @@ section{
         }
         p{
             line-height: 30px;
-            /* font-family: 'Bespoke Sans'; */
         }
          .number{
         position: absolute;
@@ -46,7 +43,7 @@ section{
         font-weight: 700;
         z-index: -1;
     }
-     .readMore{
+    .readMore{
         display: flex;
         align-items: center;
         gap: 10px;
@@ -58,6 +55,5 @@ section{
        max-width: 500px;
        height: auto;
     }
-   
 }
-` 
+`

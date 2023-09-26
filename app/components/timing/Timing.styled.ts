@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const LevelStyled = styled.div`
+export const TimingStyled = styled.div`
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alata&family=Archivo&family=Barlow:wght@600&family=Cabin:wght@500&family=Cinzel:wght@500;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Gilda+Display&family=Inclusive+Sans&family=Inter:wght@400;600&family=Josefin+Sans:wght@300;400;600&family=League+Spartan:wght@400;500;700&family=Manrope:wght@300&family=Maven+Pro&family=Merriweather:wght@700&family=Montserrat:ital,wght@0,400;0,600;0,700;1,500&family=Nanum+Gothic&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,600&family=Patrick+Hand&family=Playfair+Display:wght@500&family=Poppins&family=Roboto:ital,wght@1,300&family=Rubik:wght@300;400&family=Saira&family=Unica+One&family=Varela&family=Varela+Round&display=swap');
 section{
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 50px;
-    margin: 0 auto;
     width: 90%;
     position: relative;
+    margin: 80px auto;
     .container{
-        /* border: 3px red solid; */
         width: 40%;
         position: relative;
         z-index:2;
@@ -60,4 +60,4 @@ section{
     }
    
 }
-` 
+`
