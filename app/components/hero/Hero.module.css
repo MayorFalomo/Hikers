@@ -40,6 +40,8 @@ section .sky{
         align-items: center;
         gap: 30px;
         font-size: 24px;
+        font-family: 'Gilda Display';
+        /* font-family: 'Gilda Display'; */
     }
    .nav p{
         font-size: 24px;
@@ -47,6 +49,7 @@ section .sky{
         align-items: center;
         gap: 20px;
         cursor: pointer;
+        font-family: 'Gilda Display';
     }
     .hoverUnderlineAnimation {
     display: inline-block;
@@ -129,4 +132,18 @@ section .sky{
            .socials p{
                 font-size: 24px;
                 font-family: 'Roboto';
+            }
+
+            @media (max-width: 1200px) {
+                .heroText{
+                    height: 70vh !important;
+                    width: 80% !important;
+                }
+                .socials{
+                    position: absolute !important;
+                    left: -80px !important;
+                }
+                .sky{
+                    border: 2px green solid;
+                }
             }

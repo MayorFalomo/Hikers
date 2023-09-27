@@ -15,11 +15,6 @@ const Level = (props: Props) => {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Image() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
-}
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, -100);
@@ -36,12 +31,6 @@ function Image() {
     }
   }
 
-  //  const { scrollYProgress } = useScroll();
-  // const scaleX = useSpring(scrollYProgress, {
-  //   stiffness: 100,
-  //   damping: 30,
-  //   restDelta: 0.001
-  // });
 
     return (
       <section ref={body} className={styles.section} >
