@@ -1,37 +1,36 @@
-import styled from 'styled-components'
-
-export const GearStyled = styled.div`
-section{
+.section{
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 50px;
     width: 90%;
     margin: 80px auto;
-    .container{
+}
+   .section .container{
         position: relative;
         z-index:2;
         width: 40%;
-        .started{
+   }
+       .container .started{
             display: flex;
             align-items: center;
             gap: 20px;
             color: #fbd784;
-              span{
+       }
+             .started span{
                 width: 70px;
                 height: 2px;
                 font-size: 32px;
                 font-weight: 600;
                 background-color: #fbd784;
-            }
         }
-        h2{
+        .container h2{
             font-family: 'Gilda Display';
             font-size: 50px;
             font-weight: 400;
             margin: 20px auto;
         }
-        p{
+        .container p{
             line-height: 30px;
         }
          .number{
@@ -49,11 +48,19 @@ section{
         gap: 10px;
         font-size: 20px;
     }
-    }
-    img{
+    .section img{
        width: 100%;
        max-width: 500px;
        height: auto;
     }
+     .imageContainer{
+  position: relative;
+ width: 500px;
+ height: 600px;
 }
-`
+.imageContainer .image {
+   width: 100%;
+       max-width: 500px;
+       height: auto;
+       object-fit: cover;
+}

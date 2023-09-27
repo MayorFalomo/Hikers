@@ -1,20 +1,18 @@
 import React from 'react'
-import { FooterStyled } from './Footer.styled'
-
+import styles from './Footer.module.css'
 type Props = {}
 
 const Footer = (props: Props) => {
     return (
-      <FooterStyled>
-      <footer>
-          <div className='footer-container' >
-              <div className='subContainer' >
+        <footer className={styles.footer} >
+          <div className={styles.footerContainer} >
+              <div className={styles.subContainer} >
               <h1>Hikers </h1>
               <p>Get out there & discover your next slope, mountain & destination! </p>
               </div>
               <span style={{color: '#667277' }} > Copyright 2023 Hikers Inc. Terms & Privacy </span>
           </div>
-          <div className='subFooter' >
+            <div className={styles.subFooter} >
           <ul>
               <h3 style={{color: '#FBD784'}} >More on The Blog </h3>
               <li>About Hikers </li>
@@ -31,7 +29,6 @@ const Footer = (props: Props) => {
               </ul>
               </div>
             </footer>
-            </FooterStyled>
   )
 }
 
