@@ -1,5 +1,5 @@
 'use client'
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useState} from 'react'
 import styles from './Hero.module.css'
 import { HiOutlineUserCircle } from 'react-icons/hi'
 import { BsArrowDown } from 'react-icons/bs'
@@ -8,16 +8,28 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { useInView, motion } from 'framer-motion' 
 import Picture from './bgImg.png'
 import Image from 'next/image'
+import {CgMenuMotion} from 'react-icons/cg'
+import {MdOutlineClose} from 'react-icons/md'
 import { useScroll, useSpring, useTransform, MotionValue} from "framer-motion";
 
 type Props = {}
 
 const Hero = (props: Props) => {
 
-  // const heroText = [
-  //   "A HIKING GUIDE ",
-  //   "Be Prepared For The Mountains And Beyond!"
-  // ]
+  const list = ['Equipment', 'About Us', 'Blog' ]
+  const [isOpen, setIsOpen ]= useState(false)
+
+  function DisplayText({ list }: any) {
+    return (
+      <div className={styles.text}>
+        {list.map((item: any, index: any) => (
+          <div key={index} className={styles.texts} >
+            {item}
+          </div>
+        ))}
+      </div>
+    )
+  }
   
   const body = useRef(null)
 
@@ -45,13 +57,20 @@ const Hero = (props: Props) => {
       <div className={styles.sky} style={{backgroundImage: 'url(./bgImg.png)' }} >
         {/* <Image className={styles.image} style={{backgroundAttachment: 'fixed'}} src={Picture} layout='fill' objectFit='cover' alt='img' placeholder='blur' /> */}
           <nav className={styles.nav} >
-            <h2>Hikers</h2>
+          <h2>Hikers</h2>
+          <div className={isOpen ? styles.navActive : styles.navFlex} >
             <ul>
-                <li className={styles.hoverUnderlineAnimation } >Equipment </li>
+              <li>{<DisplayText list={list}  />} </li>
+                {/* <li className={styles.hoverUnderlineAnimation } >Equipment </li>
                 <li className={styles.hoverUnderlineAnimation } >About us </li>
-                <li className={styles.hoverUnderlineAnimation } >Blog </li>
+                <li className={styles.hoverUnderlineAnimation } >Blog </li> */}
             </ul>
             <p> {<HiOutlineUserCircle fontSize='30px' />} Account </p>
+            </div>
+          <p className={styles.hamburger} >
+            {isOpen ? <span onClick={() => setIsOpen(false)} className={styles.close} >{< MdOutlineClose fontSize={40} cursor='pointer' />} </span> :
+            <span onClick={() => setIsOpen(true)} >{< CgMenuMotion fontSize={40} cursor='pointer' />} </span>
+          }</p>
             </nav>
         <div className={styles.overLay} > </div>
           <div ref={ref} className={styles.heroText} >
