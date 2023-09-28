@@ -40,7 +40,7 @@
         .container .number{
         position: absolute;
         top: -70px;
-        left: -100px;
+        left: -50px;
         color: rgb(37, 56, 61);
         font-size: 150px ;
         font-weight: 700;
@@ -67,4 +67,50 @@
        max-width: 500px;
        height: auto;
        object-fit: cover;
+}
+
+@media (max-width: 1000px) {
+    .section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 40px auto;
+    }
+    .section .container {
+        width: 70%;
+    }
+    .imageContainer{
+        position: relative;
+        width: 500px;
+        height: 600px;
+}
+   .imageContainer .image {
+   width: 100%;
+       max-width: 600px;
+       height: auto;
+       object-fit: cover;
+}
+ .container .number{
+        position: absolute;
+        top: -70px;
+        left: -120px;
+        color: rgb(37, 56, 61);
+        font-size: 150px ;
+        font-weight: 700;
+        z-index: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .container .number{
+        position: absolute;
+        top: -70px;
+        left: -30px;
+        /* border: 2px red solid; */
+
+    }
+    .section .container{
+        width: 100%;
+    }
 }

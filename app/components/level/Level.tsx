@@ -17,7 +17,7 @@ const Level = (props: Props) => {
 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, -100);
+  const y = useParallax(scrollYProgress, -120);
 
    const body = useRef(null)
 

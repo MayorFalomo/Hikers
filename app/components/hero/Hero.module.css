@@ -139,9 +139,6 @@ section .sky{
             }
         .h1{
             font-size: clamp(100px, 5vw, 120px);
-            /* font-size: 5vw ; */
-            /* font-size: 700% ; */
-            /* font-size: 120px; */
             font-family: 'Gilda Display';
             /* transform: translateY(5%); */
         }
@@ -166,7 +163,7 @@ section .sky{
                 }
                 .socials{
                     position: absolute !important;
-                    left: -80px !important;
+                    left: -90px !important;
                 }
             }
 
@@ -239,3 +236,25 @@ section .sky{
                     display: flex ;
                 }
             }
+
+            @media (max-width: 800px) {
+                .h1{
+                    font-size: clamp(64px, 5vw, 96px);
+                }
+                 .heroText  .guide{
+                    font-size: 20px;
+                }
+                 .heroText p span{
+                width: 70px;
+                height: 3px;
+            }
+            }
+
+            @media (max-width: 500px) {
+                .nav h2 {
+                    font-size: 32px;
+                }
+                  .h1 {
+                        font-size: clamp(32px, 5vw,48px) !important;
+                    }
+            } 
