@@ -19,6 +19,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
     }
         .subContainer P{
             line-height: 30px;
@@ -34,9 +35,47 @@
        .footer ul{
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             gap: 15px;
             justify-content: flex-start ;
+            font-family: 'Inter';
         }
         .footer ul li:hover{
             color: #FBD784;
+            transition: 0.5s ease;
+        }
+
+        @media (max-width:800px) {
+            .footerContainer{
+                width: 80% !important;
+            }
+            .footer .subFooter{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 530px) {
+            .footer{
+                flex-direction: column;
+            }
+            .footerContainer{
+                display: flex;
+                justify-content: center;
+                width: 100% !important;
+                text-align: center;
+            }
+            .footerContainer span{
+                text-align: center;
+                margin: 0 auto;
+            }
+            .footer .subFooter{
+                justify-content: center;
+                width: 100%;
+            }
+            .footer ul{
+                align-items: center !important;
+            }
         }

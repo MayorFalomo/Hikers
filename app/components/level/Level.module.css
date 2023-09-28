@@ -35,7 +35,8 @@
         }
        .container p{
             line-height: 30px;
-            /* font-family: 'Bespoke Sans'; */
+            font-family: 'Inter';
+            font-size: 18px;
         }
         .container .number{
         position: absolute;

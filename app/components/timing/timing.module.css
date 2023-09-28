@@ -35,7 +35,8 @@
         }
        .container p{
             line-height: 30px;
-            /* font-family: 'Bespoke Sans'; */
+            font-family: 'Inter';
+            font-size: 18px;
         }
         .container .number{
         position: absolute;
@@ -73,6 +74,14 @@
         margin: 40px auto;
     }
     .section .container{
-        border: 2px red solid;
+        width: 70%;
+    }
+}
+@media (max-width: 600px) {
+    .section .container{
+        width: 100% !important;
+    }
+    .number{
+       left: -30px !important;
     }
 }
