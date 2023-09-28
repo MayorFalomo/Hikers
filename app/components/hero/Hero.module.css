@@ -1,6 +1,5 @@
-section .sky{
+.section .sky{
         width: 100%;
-        height: 100vh;
         height: 100vh;
         background-color: black;
         background-repeat: no-repeat;
@@ -9,8 +8,8 @@ section .sky{
         background-attachment: fixed;
         filter: brightness(100%);
         object-fit: cover;
-        /* border: 2px red solid; */
         position: relative;
+        /* border: 2px red solid; */
 }
         .sky .overLay{
             background-color: rgba(0, 0, 0, 0.1);
@@ -21,49 +20,59 @@ section .sky{
             width: 100%;
             height: 100vh;
         }
-        .text{
+        /* .text{
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 40px;
-            /* border: 2px red solid; */
+            position: relative;
         }
-        .text .texts{
+        .text .hoverUnderlineAnimation{
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
-        }
+        } */
         .nav h2{
             font-size: 70px;
             font-family: 'Gilda Display';
         }
         .nav{
-            position: relative;
+            position: absolute;
+            left: 0;
+            top: 0;
             z-index: 9;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 90%;
+            justify-content: center;
+            width: 100%;
             margin: 0 auto;
             padding: 20px;
             /* border: 2px red solid; */
         }
-        .navFlex{
+        .desktopNav{
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 30px;
             /* border: 2px green solid; */
-            width: 60%;
+            width: 90% !important;
         }
-    .nav ul{
+        .navFlex{
+            display: none;
+        }
+        .navActive{
+            display: none;
+        }
+    .desktopNav ul{
         display: flex;
         align-items: center;
-        gap: 30px;
+        justify-content: center;
+        gap: 50px;
+        /* border: 2px red solid; */
+        width: 100%;
         font-size: 24px;
         font-family: 'Gilda Display';
-        /* font-family: 'Gilda Display'; */
     }
    .nav p{
         font-size: 24px;
@@ -73,16 +82,17 @@ section .sky{
         cursor: pointer;
         font-family: 'Gilda Display';
     }
-    .nav .hamburger{
+    .section .hamburger{
         display: none;
     }
-    .hoverUnderlineAnimation {
-    display: inline-block;
-    position: relative;
+    .desktopNav ul .hoverUnderlineAnimation {
+    display: flex;
     color: #fff;
+    position: relative;
+    z-index: 10;
   }
 
-  .hoverUnderlineAnimation:after {
+ .desktopNav ul .hoverUnderlineAnimation:after {
     content: "";
     position: absolute;
     width: 100%;
@@ -95,7 +105,7 @@ section .sky{
     transition: transform 0.25s ease-out;
   }
 
-  .hoverUnderlineAnimation:hover:after {
+  .desktopNav ul .hoverUnderlineAnimation:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
@@ -146,6 +156,7 @@ section .sky{
             position: absolute;
             left: 0%;
             top: 50%;
+            z-index: 2;
             transform: rotate(90deg);
             display: flex;
             align-items: center;
@@ -170,68 +181,91 @@ section .sky{
             @media (max-width: 1050px) {
                 .nav{
                     width: 100%;
-                }
-                .text{
+                    /* border: 2px green solid; */
                     display: flex;
-                    flex-direction: column;
-                    gap: 20px;
+                    justify-content: space-between;
                 }
-                .navFlex {
+               .section .hamburger{
+                display: flex;
+                position: fixed;
+                right:30px;
+                top: 50px;
+                z-index: 999;
+               }
+                .desktopNav{
+                    display: none;
+                }
+               .section .navFlex {
                     flex-direction: column;
                     align-Items: center;
                     justify-content: center;
                     position: absolute;
-                    top: -150vw;
+                    top: 0;
+                    right: 0;
+                    transform: translateX(100%) !important;
+                    will-change: transform;
                     z-index: 2;
-                    right: 0px;
-                    height: 50vh;
-                    width: 100%;
+                    height: 100vh;
+                    width: 60% !important;
                     background: rgba(255, 255, 255, 0);
-                    border-radius: 16px;
                     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                     backdrop-filter: blur(7.6px);
                     -webkit-backdrop-filter: blur(7.6px);
-                    transition: 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-                    /* transition: 0.6s cubic-bezier(0.76, 0, 0.24, 1); */
+                    transition: 0.6s cubic-bezier(0.08, 0.65, 0.53, 0.96) !important;
+                    border: 2px red solid;
                 }
-                .navActive{
+               .section .navActive{
+                    border: 2px blue solid;
                     display: flex;
                     flex-direction: column;
                     align-Items: center;
                     justify-content: center;
-                    position: absolute;
+                    position: fixed !important;
                     right: 0;
                     top: 0px;
+                    transform: translateX(0%);
                     z-index: 8;
-                    height: 50vh;
-                    width: 100%;
+                    height: 100vh;
+                    width: 60% !important;
                     background: rgba(255, 255, 255, 0);
-                    border-radius: 16px;
                     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                     backdrop-filter: blur(7.6px);
                     -webkit-backdrop-filter: blur(7.6px);
-                    transition: 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+                    transition: 0.6s cubic-bezier(0.08, 0.65, 0.53, 0.96) !important ;
                 }
                 .close{
-                    position: absolute;
+                    position: fixed;
                     right: 30px;
                     top: 30px;
-                    z-index: 9;
+                    z-index: 99;
                 }
-                .navFlex ul{
+                .navFlex .listItem{
                     display: flex;
                     flex-direction: column !important;
                     justify-content: center;
                     align-items: center;
+                    font-size: 30px;
                 }
-                .navActive ul{
+
+                .navActive .listItem{
                     display: flex;
                     flex-direction: column !important;
                     justify-content: center;
                     align-items: center;
+                    font-size: 30px;
+                    /* border: #fbd784 2px solid; */
                 }
-                .navActive p{
-                    margin-top: 25px;
+                .navFlex li{
+                    margin-top: 20px;
+                    font-size: 30px;
+                      transform-origin: -20px 50%;
+
+                }
+                .navActive li{
+                    margin-top: 20px;
+                    font-size: 30px;
+                      transform-origin: -20px 50%;
+
                 }
                 .nav .hamburger{
                     display: flex ;
