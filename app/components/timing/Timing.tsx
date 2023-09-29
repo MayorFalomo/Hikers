@@ -31,7 +31,7 @@ const Timing = (props: Props) => {
     }
   }
     return (
-        <section className={styles.section} >
+        <section ref={body} className={styles.section} >
                 <div className={styles.container} >
           <motion.p variants={animate} initial="initial" animate={isInView ? "open" : "" } className={styles.started}><span> </span> WHERE YOU GO IS THE KEY </motion.p>
           <motion.h2 variants={animate} initial="initial" animate={isInView ? "open" : "" } >Understanding Your Map & Timing </motion.h2>
@@ -39,7 +39,7 @@ const Timing = (props: Props) => {
             <p className={styles.readMore}style={{ color: '#fbd784', cursor: 'pointer' }} > read more {<BsArrowRight />} </p>
             <motion.span style={{y}} className={styles.number} >03 </motion.span>
         </div>
-        <div ref={body} className={styles.imageContainer} >
+        <div  className={styles.imageContainer} >
           <Image className={styles.image} src={Watch} fill alt='img' placeholder='blur' />
         </div>
                 {/* <img src="./watch.png" alt="img" /> */}

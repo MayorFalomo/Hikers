@@ -10,76 +10,67 @@ import Picture from './bgImg.png'
 import Image from 'next/image'
 import {CgMenuMotion} from 'react-icons/cg'
 import {MdOutlineClose} from 'react-icons/md'
-import {  useAnimate, stagger} from "framer-motion";
+import { useAnimate, stagger } from "framer-motion";
+import {HiOutlineUserCircle as Icon} from 'react-icons/hi'
 
 type Props = {}
 
+
 const Hero = (props: Props) => {
 
-  const list = ['Equipment', 'About Us', 'Blog' ]
+  const list = ['Equipment', 'About Us', 'Blog', [<Icon />, 'Account'] ]
   const [isOpen, setIsOpen] = useState(false)
 
-    // return (
-    //   <ul className={styles.text}>
-    //     {list.map((item: any, index: any) => (
-    //       <li key={index} className={styles.hoverUnderlineAnimation }  >
-    //         {item}
-    //       </li>
-    //     ))}
-    //   </ul>
-    // )
+  const DisplayMenu = ({ list }: any) => {
+    
+     const listItemVariants = {
+    hidden: { opacity: 0, x: '100%', filter: 'blur(10px)' },
+    visible: {
+      opacity: 1,
+      x: '0%',
+      filter: 'blur(0px)',
+      transition: {
+         type: 'spring',
+        stiffness: 100,
+        damping: 10,
+        delay: 0.2, // Adjust the delay as needed
+      },
+    },
+  };
+
+     const listContainerVariants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.09, // Adjust the stagger effect
+      },
+    },
+    };
+    
+     const exitVariants = {
+    hidden: { opacity: 0, x: '100%' },
+    visible: { opacity: 1, x: '0%' },
+    };
+    
+    return (
+      <motion.ul
+        variants={listContainerVariants}
+        initial="initial"
+        animate={isOpen ? 'visible' : 'hidden'}
+        exit={'hidden'}
+        className={styles.menu}>
+        {list.map((item:any, index:any) => (
+          <motion.li
+            className={styles.hoverUnderlineAnimation}
+            key={index} variants={listItemVariants}
+          initial="hidden"
+            animate="visible"
+            exit="visible"
+          >{Array.isArray(item) ? item : <span>{item}</span>} </motion.li>
+        ))}
+      </motion.ul>
+    )
+  }
   
-  
-  function useMenuAnimation(isOpen: boolean) {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    const menuAnimations = isOpen
-      ? [
-          // Animation for when the nav opens
-          [
-            "nav",
-            { opacity: 0, transform: "translateX(0%)" },
-            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.8 },
-          ],
-          // Animation for when the li opens
-          [
-            "li",
-            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-            { delay: stagger(0.09), at: "-0.1" },
-          ],
-        ]
-      : [
-          // Animation for when the li closes
-          [
-            "li",
-            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-            { delay: stagger(0.09, { from: "last" }), at: "<" },
-          ],
-          // Animation for when the nav closes
-          [
-            "nav",
-            { opacity: 0, transform: "translateX(-100%)" },
-            { at: "-0.1" },
-          ],
-        ];
-
-     animate([
-      [
-        "path.top",{ }, { at: "<" } ],
-      ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
-      ["path.bottom", { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
-        { at: "<" }
-      ],
-      ...menuAnimations
-    ]);
-       
-  }, [isOpen]);
-
-  return scope;
-}
-
-const scope = useMenuAnimation(isOpen);
 
 
   const body = useRef(null)
@@ -93,18 +84,14 @@ const scope = useMenuAnimation(isOpen);
       transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] }
     }
   }
-  
-  
 
   return (
     <div className={styles.section} ref={body} >
-       <nav ref={scope} className={isOpen ? styles.navActive : styles.navFlex} >
-            <ul  className={styles.listItem} >
-                <li className={styles.hoverUnderlineAnimation } >Equipment </li>
-                <li className={styles.hoverUnderlineAnimation } >About us </li>
-              <li className={styles.hoverUnderlineAnimation} >Blog </li>
-              </ul>
-        <li> {<HiOutlineUserCircle fontSize='30px' />} Account </li>
+       <nav className={isOpen ? styles.navActive : styles.navFlex} >
+        <ul className={styles.listItem} >
+          <li>{<DisplayMenu list={list} />} </li>
+                  {/* <li> {<HiOutlineUserCircle fontSize='30px' />} Account </li> */}
+        </ul>         
       </nav>
       <p className={styles.hamburger} >
           {isOpen ?
