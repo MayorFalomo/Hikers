@@ -19,62 +19,6 @@ const Hero = (props: Props) => {
   const list = ['Equipment', 'About Us', 'Blog' ]
   const [isOpen, setIsOpen] = useState(false)
 
-  function useMenuAnimation(isOpen: boolean) {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    const menuAnimations = isOpen
-      ? [
-          // Animation for when the nav opens
-          // [
-          //   "nav",
-          //   { opacity: 0, transform: "translateX(0%)" },
-          //   { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 },
-          // ],
-          // Animation for when the li opens
-          [
-            "li",
-            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-            { delay: stagger(0.05), at: "-0.1" },
-          ],
-        ]
-      : [
-          // Animation for when the li closes
-          [
-            "li",
-            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-            { delay: stagger(0.05, { from: "last" }), at: "<" },
-          ],
-          // Animation for when the nav closes
-          // [
-          //   "nav",
-          //   { opacity: 0, transform: "translateX(-100%)" },
-          //   { at: "-0.1" },
-          // ],
-        ];
-
-    animate([...menuAnimations]
-
-      // [
-      // ["path.top", {}, { at: "<" }],
-      // ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
-      // [
-      //   "path.bottom",
-      //   {
-      //     d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346",
-      //   },
-      //   { at: "<" },
-      // ],
-      // ...menuAnimations.flat()
-      // ]
-    );
-  }, [isOpen]);
-
-  return scope;
-}
-
-const scope = useMenuAnimation(isOpen);
-
     // return (
     //   <ul className={styles.text}>
     //     {list.map((item: any, index: any) => (
@@ -84,54 +28,60 @@ const scope = useMenuAnimation(isOpen);
     //     ))}
     //   </ul>
     // )
+  
+  
+  function useMenuAnimation(isOpen: boolean) {
+  const [scope, animate] = useAnimate();
 
-//   function useMenuAnimation(isOpen: boolean) {
-//     const [scope, animate] = useAnimate();
+  useEffect(() => {
+    const menuAnimations = isOpen
+      ? [
+          // Animation for when the nav opens
+          [
+            "nav",
+            { opacity: 0, transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.8 },
+          ],
+          // Animation for when the li opens
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.09), at: "-0.1" },
+          ],
+        ]
+      : [
+          // Animation for when the li closes
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.09, { from: "last" }), at: "<" },
+          ],
+          // Animation for when the nav closes
+          [
+            "nav",
+            { opacity: 0, transform: "translateX(-100%)" },
+            { at: "-0.1" },
+          ],
+        ];
 
-//     useEffect(() => {
-
-//     const menuAnimations = isOpen
-//       ? [
-//         [
-//             //Animation for when the nav opens
-//           "nav",
-//             {opacity: 0},
-//             { transform: "translateX(0%)" },
-//             { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 }
-//         ],
-//         //Animation for when the li opens
-//           [
-//             "li",
-//             { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-//             { delay: stagger(0.05), at: "-0.1" }
-//           ]
-//         ]
-//       : [
-//           [
-//             "li",
-//             { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-//             { delay: stagger(0.05, { from: "last" }), at: "<" }
-//           ],
-//           ["nav",{opacity: 0}, { transform: "translateX(-100%)" }, { at: "-0.1" }]
-//         ];
-
-//     animate([
-//       [
-//         "path.top",{ }, { at: "<" } ],
-//       ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
-//       ["path.bottom", { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
-//         { at: "<" }
-//       ],
-//       ...menuAnimations
-//     ]);
+     animate([
+      [
+        "path.top",{ }, { at: "<" } ],
+      ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
+      ["path.bottom", { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
+        { at: "<" }
+      ],
+      ...menuAnimations
+    ]);
        
-//   }, [isOpen]);
+  }, [isOpen]);
 
-//   return scope;
-// }
-//   const scope = useMenuAnimation(isOpen);
-  
-  
+  return scope;
+}
+
+const scope = useMenuAnimation(isOpen);
+
+
   const body = useRef(null)
 
   const isInView = useInView(body, {margin: "-10%" })
