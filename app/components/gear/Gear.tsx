@@ -31,9 +31,9 @@ const Gear = (props: Props) => {
   }
 
     return (
-      <section ref={ref} className={styles.section} >
+      <section ref={body} className={styles.section} >
         {/* <img src='./gear.png' alt="img" /> */}
-         <div ref={body} className={styles.imageContainer} >
+         <div ref={ref} className={styles.imageContainer} >
           <Image className={styles.image} src={Picture} fill alt='img' placeholder='blur' />
         </div>
            <div className={styles.container} >

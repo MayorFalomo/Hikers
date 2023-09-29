@@ -5,7 +5,7 @@ import { HiOutlineUserCircle } from 'react-icons/hi'
 import { BsArrowDown } from 'react-icons/bs'
 import { IoLogoInstagram} from 'react-icons/io'
 import { FaXTwitter } from 'react-icons/fa6'
-import { useInView, motion, usePresence } from 'framer-motion' 
+import { useInView, motion, usePresence, AnimatePresence, Variants, useAnimation } from 'framer-motion' 
 import Picture from './bgImg.png'
 import Image from 'next/image'
 import {CgMenuMotion} from 'react-icons/cg'
@@ -22,13 +22,15 @@ const Hero = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const DisplayMenu = ({ list }: any) => {
+
     
+      
      const listItemVariants = {
     hidden: { opacity: 0, x: '100%', filter: 'blur(10px)' },
     visible: {
       opacity: 1,
       x: '0%',
-      filter: 'blur(0px)',
+       filter: 'blur(0px)',
       transition: {
          type: 'spring',
         stiffness: 100,
@@ -41,14 +43,10 @@ const Hero = (props: Props) => {
      const listContainerVariants = {
     visible: {
       transition: {
-        staggerChildren: 0.09, // Adjust the stagger effect
+        staggerChildren: 0.09,
+        // staggerDirection: -1,
       },
     },
-    };
-    
-     const exitVariants = {
-    hidden: { opacity: 0, x: '100%' },
-    visible: { opacity: 1, x: '0%' },
     };
     
     return (
@@ -56,12 +54,13 @@ const Hero = (props: Props) => {
         variants={listContainerVariants}
         initial="initial"
         animate={isOpen ? 'visible' : 'hidden'}
-        exit={'hidden'}
+        exit='hidden'
         className={styles.menu}>
         {list.map((item:any, index:any) => (
           <motion.li
+            key={index}
+            variants={listItemVariants }
             className={styles.hoverUnderlineAnimation}
-            key={index} variants={listItemVariants}
           initial="hidden"
             animate="visible"
             exit="visible"
@@ -85,19 +84,19 @@ const Hero = (props: Props) => {
     }
   }
 
+
   return (
     <div className={styles.section} ref={body} >
        <nav className={isOpen ? styles.navActive : styles.navFlex} >
         <ul className={styles.listItem} >
           <li>{<DisplayMenu list={list} />} </li>
-                  {/* <li> {<HiOutlineUserCircle fontSize='30px' />} Account </li> */}
         </ul>         
       </nav>
       <p className={styles.hamburger} >
           {isOpen ?
             <span onClick={() => setIsOpen(false)} className={styles.close} >{< MdOutlineClose fontSize={40} cursor='pointer' />} </span> :
             <span onClick={() => setIsOpen(true)} className={styles.open} >{< CgMenuMotion fontSize={40} cursor='pointer' />} </span>
-          }</p>
+        }</p>
       <div className={styles.sky} style={{backgroundImage: 'url(./bgImg.png)' }} >
         {/* <Image className={styles.image} style={{backgroundAttachment: 'fixed'}} src={Picture} layout='fill' objectFit='cover' alt='img' placeholder='blur' /> */}
           <div className={styles.nav} >
